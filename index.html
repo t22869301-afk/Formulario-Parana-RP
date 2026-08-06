@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Staff - Paraná RP</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #1e90ff;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 8px 24px rgba(30, 144, 255, 0.2);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #1e90ff;
+            margin-bottom: 8px;
+        }
+
+        .form-container p {
+            text-align: center;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+
+        .input-group input, 
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .input-group input:focus, 
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #1e90ff;
+        }
+
+        .section-title {
+            color: #1e90ff;
+            font-size: 15px;
+            margin: 25px 0 12px 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 15px;
+        }
+
+        .btn-submit:hover {
+            background-color: #0066cc;
+        }
+
+        #mensagemStatus {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Recrutamento Staff</h2>
+        <p>Paraná RP — Questionário Completo de Regras</p>
+
+        <form id="staffForm">
+            <div class="section-title">📌 Dados Pessoais</div>
+
+            <div class="input-group">
+                <label for="nickRoblox">Seu Nick no Roblox</label>
+                <input type="text" id="nickRoblox" placeholder="Ex: Player123" required>
+            </div>
+
+            <div class="input-group">
+                <label for="idade">Qual a sua idade?</label>
+                <input type="number" id="idade" placeholder="Ex: 15" required>
+            </div>
+
+            <div class="input-group">
+                <label for="discord">Seu Discord (Nome de Usuário)</label>
+                <input type="text" id="discord" placeholder="Ex: usuario_dc" required>
+            </div>
+
+            <div class="section-title">🧠 Teste de Regras (15 Perguntas)</div>
+
+            <div class="input-group">
+                <label for="q1">1. O que significa VDM (Vehicle Deathmatch)?</label>
+                <select id="q1" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Matar alguém com arma de fogo</option>
+                    <option value="c">Usar o veículo para atropelar e matar alguém sem motivo</option>
+                    <option value="e">Acelerar em um sinal vermelho</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q2">2. O que significa RDM (Random Deathmatch)?</label>
+                <select id="q2" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Matar ou agredir outro jogador sem motivo de RP prévio</option>
+                    <option value="e">Fazer assalto a mão armada</option>
+                    <option value="e">Uso incorreto do chat global</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q3">3. O que é Powergaming?</label>
+                <select id="q3" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Comprar carros caros na concessionária</option>
+                    <option value="c">Fazer ações impossíveis na vida real ou forçar RP sem dar chance ao outro</option>
+                    <option value="e">Usar rádio da polícia sendo civil</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q4">4. O que é Metagaming?</label>
+                <select id="q4" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Usar informações fora do jogo (Discord/Live) para benefício dentro do RP</option>
+                    <option value="e">Roubar lojas sem ter a profissão de bandido</option>
+                    <option value="e">Andar de helicóptero sem habilitação</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q5">5. O que significa Combat Logging (CL)?</label>
+                <select id="q5" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Começar um combate corporal em zona segura</option>
+                    <option value="c">Desconectar do jogo no meio de uma ação (abordagem, assalto ou prisão) para evitar perder itens</option>
+                    <option value="e">Usar gravador de tela durante uma denúncia</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q6">6. O que significa Amor à Vida?</label>
+                <select id="q6" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Valorizar a vida do seu personagem em situações de perigo (ex: render-se sob mira de arma)</option>
+                    <option value="e">Comprar medicamentos na farmácia quando a vida estiver baixa</option>
+                    <option value="e">Não aceitar propostas de trabalho perigosas</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q7">7. O que é uma Safezone (Zona Segura)?</label>
+                <select id="q7" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Locais onde você pode empinar moto sem ser multado</option>
+                    <option value="c">Locais como Hospital/Praça/Prefeitura onde é proibido qualquer tipo de ação criminosa</option>
+                    <option value="e">Áreas restritas apenas para a Staff</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q8">8. O que significa OOC (Out Of Character)?</label>
+                <select id="q8" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Falar como o jogador e não como o personagem (Fora do RP)</option>
+                    <option value="e">Falar dentro do personagem usando o chat local</option>
+                    <option value="e">Regra que proíbe usar veículos modificados</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q9">9. O que significa IC (In Character)?</label>
+                <select id="q9" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Ações administrativas da Staff</option>
+                    <option value="c">Tudo o que acontece dentro do personagem durante o RP</option>
+                    <option value="e">O painel de configurações do jogador</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q10">10. O que significa Dark RP?</label>
+                <select id="q10" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Encenar temas extremamente pesados/sensíveis (assédio, racismo, apologia, etc.) - Extremamente proibido</option>
+                    <option value="e">Jogar no servidor durante a noite do jogo</option>
+                    <option value="e">Fazer assaltos no beco sem iluminação</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q11">11. O que é "Revenge Kill"?</label>
+                <select id="q11" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Reclamar com a Staff após ser morto</option>
+                    <option value="c">Voltar imediatamente ao local onde morreu para tentar matar quem te matou</option>
+                    <option value="e">Contratar um matador de aluguel no RP</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q12">12. O que significa "NLR" (No Memory Rule / Regra do Esquecimento)?</label>
+                <select id="q12" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Ao ser finalizado/morto, seu personagem esquece de tudo que levou àquela morte</option>
+                    <option value="e">Regra que proíbe trocar de nome no servidor</option>
+                    <option value="e">Esquecer a senha da conta no Roblox</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q13">13. Se você presenciar um jogador cometendo uma infração no RP, o que deve fazer?</label>
+                <select id="q13" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Quebrar as regras também para se defender no momento</option>
+                    <option value="c">Manter o RP, gravar/printar e abrir uma denúncia pelo suporte/ticket</option>
+                    <option value="e">Dar Spawn em carros em cima do jogador infrator</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q14">14. Qual a atitude correta de um Staff em serviço?</label>
+                <select id="q14" required>
+                    <option value="">Selecione...</option>
+                    <option value="c">Ser imparcial, respeitoso e seguir as diretrizes do servidor sem beneficiar amigos</option>
+                    <option value="e">Usar comandos para ajudar a sua facção ou amigos</option>
+                    <option value="e">Dar ban sem ouvir a versão dos dois lados</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="q15">15. É permitido usar o cargo de Staff para conseguir vantagens no RP?</label>
+                <select id="q15" required>
+                    <option value="">Selecione...</option>
+                    <option value="e">Sim, se ninguém estiver vendo</option>
+                    <option value="c">Não, é totalmente proibido (Abuso de Poder) e gera remoção imediata da equipe</option>
+                    <option value="e">Apenas quando a polícia estiver perseguindo você</option>
+                </select>
+            </div>
+
+            <div class="section-title">📝 Informações Adicionais</div>
+
+            <div class="input-group">
+                <label for="tempo">Tempo disponível por dia</label>
+                <input type="text" id="tempo" placeholder="Ex: 4 horas à tarde" required>
+            </div>
+
+            <div class="input-group">
+                <label for="motivo">Por que você quer entrar para a equipe?</label>
+                <textarea id="motivo" rows="3" placeholder="Escreva um breve motivo..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Enviar Inscrição</button>
+            <div id="mensagemStatus"></div>
+        </form>
+    </div>
+
+    <script>
+        // COLE O URL DO SEU WEBHOOK DO DISCORD AQUI
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1535039251241242724/7WmmE0OFdyPGDp4zmUrB8R9np9y9POeZwRFPz9STQ8DV8e-9v6V4W1yP3ORO1w2_pZgf";
+
+        document.getElementById('staffForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const status = document.getElementById('mensagemStatus');
+            const nickRoblox = document.getElementById('nickRoblox').value;
+            const idade = parseInt(document.getElementById('idade').value);
+            const discord = document.getElementById('discord').value;
+            const tempo = document.getElementById('tempo').value;
+            const motivo = document.getElementById('motivo').value;
+
+            // CONTAGEM DE ACERTOS (15 PERGUNTAS)
+            let acertos = 0;
+            for (let i = 1; i <= 15; i++) {
+                const resp = document.getElementById('q' + i).value;
+                if (resp === "c") {
+                    acertos++;
+                }
+            }
+
+            // CRITÉRIOS DE APROVAÇÃO:
+            // 1. Idade Mínima: 14 anos
+            // 2. Acertos nas Regras: Mínimo 12 de 15 (80%)
+            let statusAprovacao = "";
+            let corEmbed = 0;
+
+            if (idade >= 14 && acertos >= 12) {
+                statusAprovacao = `✅ APROVADO AUTOMATICAMENTE!\n• Idade: ${idade} anos (OK)\n• Pontuação Regras: ${acertos}/15 acertos (OK)`;
+                corEmbed = 3066993; // Verde/Azul
+            } else if (idade < 14) {
+                statusAprovacao = `❌ REPROVADO AUTOMATICAMENTE!\n• Motivo: Idade insuficiente (${idade} anos - Mínimo é 14)\n• Pontuação Regras: ${acertos}/15 acertos`;
+                corEmbed = 15158332; // Vermelho
+            } else {
+                statusAprovacao = `❌ REPROVADO AUTOMATICAMENTE!\n• Motivo: Nota insuficiente nas regras (${acertos}/15 acertos - Mínimo é 12/15)\n• Idade: ${idade} anos (OK)`;
+                corEmbed = 15158332; // Vermelho
+            }
+
+            status.style.color = "#1e90ff";
+            status.innerText = "⏳ Corrigindo prova e enviando ao Discord...";
+
+            // Payload para o Discord
+            const payload = {
+                embeds: [{
+                    title: "📋 Prova de Recrutamento Staff (15 Questões)",
+                    color: corEmbed,
+                    fields: [
+                        { name: "👤 Nick Roblox", value: nickRoblox, inline: true },
+                        { name: "🎂 Idade", value: idade + " anos", inline: true },
+                        { name: "💬 Discord", value: discord, inline: true },
+                        { name: "🎯 Resultado da Prova", value: `${acertos} de 15 acertos`, inline: true },
+                        { name: "⏰ Tempo Disponível", value: tempo, inline: true },
+                        { name: "📝 Motivo", value: motivo, inline: false },
+                        { name: "📊 Parecer do Sistema", value: `**${statusAprovacao}**`, inline: false }
+                    ],
+                    footer: { text: "Paraná RP • Avaliação Automática" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    if (idade >= 14 && acertos >= 12) {
+                        status.style.color = "#4cff4c";
+                        status.innerText = "✅ Parabéns! Você foi APROVADO com nota " + acertos + "/15!";
+                    } else {
+                        status.style.color = "#ff4c4c";
+                        status.innerText = "❌ Formulário enviado, mas você foi REPROVADO no teste.";
+                    }
+                    document.getElementById('staffForm').reset();
+                } else {
+                    throw new Error("Erro ao enviar");
+                }
+            } catch (error) {
+                status.style.color = "#ff4c4c";
+                status.innerText = "❌ Erro ao enviar. Verifique o link do Webhook.";
+            }
+        });
+    </script>
+</body>
+</html>
