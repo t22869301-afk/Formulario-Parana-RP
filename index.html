@@ -101,7 +101,7 @@
 
     <div class="form-container">
         <h2>Recrutamento Staff</h2>
-        <p>Paraná RP — Requisito mínimo: +14 anos</p>
+        <p>Paraná RP — Sistema de Avaliação Automática</p>
 
         <form id="staffForm">
             <div class="input-group">
@@ -111,7 +111,7 @@
 
             <div class="input-group">
                 <label for="idade">Qual a sua idade?</label>
-                <input type="number" id="idade" min="10" placeholder="Ex: 14" required>
+                <input type="number" id="idade" placeholder="Ex: 15" required>
             </div>
 
             <div class="input-group">
@@ -148,30 +148,35 @@
             const tempo = document.getElementById('tempo').value;
             const motivo = document.getElementById('motivo').value;
 
-            // Validação da idade mínima (+14 anos)
-            if (idade < 12) {
-                status.style.color = "#ff4c4c";
-                status.innerText = "❌ É necessário ter no mínimo 14 anos para se candidatar.";
-                return;
+            // REGRA DE APROVAÇÃO AUTOMÁTICA
+            let statusAprovacao = "";
+            let corEmbed = 0; // Código de cor em decimal
+
+            if (idade >= 14) {
+                statusAprovacao = "✅ APROVADO AUTOMATICAMENTE (Idade: 14+)";
+                corEmbed = 3066993; // Verde / Azul
+            } else {
+                statusAprovacao = "❌ REPROVADO AUTOMATICAMENTE (Idade insuficiente: 13 ou menos)";
+                corEmbed = 15158332; // Vermelho
             }
 
             status.style.color = "#1e90ff";
-            status.innerText = "⏳ Enviando formulário...";
+            status.innerText = "⏳ Processando candidatura...";
 
-            // Payload formatado para Embed no Discord
+            // Embed enviada para o Discord
             const payload = {
                 embeds: [{
-                    title: "📋 Nova Candidatura para Staff",
-                    color: 3066993, // Azul Neon
+                    title: "📋 Resultado de Candidatura Staff",
+                    color: corEmbed,
                     fields: [
                         { name: "👤 Nick Roblox", value: nickRoblox, inline: true },
                         { name: "🎂 Idade", value: idade + " anos", inline: true },
                         { name: "💬 Discord", value: discord, inline: true },
                         { name: "⏰ Tempo Disponível", value: tempo, inline: false },
                         { name: "📝 Motivo", value: motivo, inline: false },
-                        { name: "✅ Status", value: "Aprovado no pré-requisito de idade (+14)", inline: false }
+                        { name: "📊 Status da Candidatura", value: `**${statusAprovacao}**`, inline: false }
                     ],
-                    footer: { text: "Paraná RP • Sistema de Inscrição" },
+                    footer: { text: "Paraná RP • Sistema de Inscrição Automática" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -184,15 +189,20 @@
                 });
 
                 if (response.ok) {
-                    status.style.color = "#4cff4c";
-                    status.innerText = "✅ Formulário enviado com sucesso para o Discord!";
+                    if (idade >= 14) {
+                        status.style.color = "#4cff4c";
+                        status.innerText = "✅ Parabéns! Você foi aprovado e seu formulário foi enviado.";
+                    } else {
+                        status.style.color = "#ff4c4c";
+                        status.innerText = "❌ Formulário enviado, porém você foi reprovado por não atingir a idade mínima de 14 anos.";
+                    }
                     document.getElementById('staffForm').reset();
                 } else {
                     throw new Error("Erro ao enviar");
                 }
             } catch (error) {
                 status.style.color = "#ff4c4c";
-                status.innerText = "❌ Erro ao enviar formulário. Verifique o link do Webhook.";
+                status.innerText = "❌ Erro ao enviar. Verifique se colocou o link do Webhook corretamente.";
             }
         });
     </script>
