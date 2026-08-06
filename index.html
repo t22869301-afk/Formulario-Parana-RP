@@ -148,10 +148,10 @@
             const tempo = document.getElementById('tempo').value;
             const motivo = document.getElementById('motivo').value;
 
-            // Validação da idade mínima (+12 anos)
+            // Validação da idade mínima (+14 anos)
             if (idade < 12) {
                 status.style.color = "#ff4c4c";
-                status.innerText = "❌ É necessário ter no mínimo 12 anos para se candidatar.";
+                status.innerText = "❌ É necessário ter no mínimo 14 anos para se candidatar.";
                 return;
             }
 
@@ -169,7 +169,7 @@
                         { name: "💬 Discord", value: discord, inline: true },
                         { name: "⏰ Tempo Disponível", value: tempo, inline: false },
                         { name: "📝 Motivo", value: motivo, inline: false },
-                        { name: "✅ Status", value: "Aprovado no pré-requisito de idade (+12)", inline: false }
+                        { name: "✅ Status", value: "Aprovado no pré-requisito de idade (+14)", inline: false }
                     ],
                     footer: { text: "Paraná RP • Sistema de Inscrição" },
                     timestamp: new Date().toISOString()
